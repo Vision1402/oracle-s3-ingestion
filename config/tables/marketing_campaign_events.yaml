@@ -1,0 +1,14 @@
+# Sends, opens, clicks, conversions: large and append-only.
+# EVENT_TS is a TIMESTAMP(6), so the watermark keeps microseconds.
+table_id: marketing_campaign_events
+source:
+  schema: NORTHWIND
+  table: CAMPAIGN_EVENTS
+  primary_key: [EVENT_ID]
+load:
+  type: incremental
+  watermark_column: EVENT_TS
+  chunk_size: 100000
+target:
+  prefix: raw/oracle/marketing/campaign_events
+enabled: true

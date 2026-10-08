@@ -1,0 +1,14 @@
+table_id: northwind_order_lines
+source:
+  schema: NORTHWIND
+  table: ORDER_LINES
+  primary_key: [ORDER_ID, LINE_NO]
+load:
+  type: incremental
+  watermark_column: LAST_UPDATED
+  chunk_size: 50000
+target:
+  prefix: raw/oracle/northwind/order_lines
+validation:
+  sum_columns: [QUANTITY]
+enabled: true

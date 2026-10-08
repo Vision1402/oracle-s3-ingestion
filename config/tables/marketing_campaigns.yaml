@@ -1,0 +1,13 @@
+# Campaign master data: small, edited by marketers -> full daily snapshot.
+table_id: marketing_campaigns
+source:
+  schema: NORTHWIND
+  table: CAMPAIGNS
+  primary_key: [CAMPAIGN_ID]
+load:
+  type: full
+target:
+  prefix: raw/oracle/marketing/campaigns
+validation:
+  sum_columns: [BUDGET]
+enabled: true

@@ -1,0 +1,8 @@
+# Linux line endings: these files run on a Linux edge node and inside Docker.
+* text=auto eol=lf
+*.sh  text eol=lf
+*.py  text eol=lf
+*.sql text eol=lf
+*.yaml text eol=lf
+*.md  text eol=lf
+Dockerfile text eol=lf

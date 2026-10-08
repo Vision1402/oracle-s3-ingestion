@@ -1,0 +1,9 @@
+
+  ================================================================
+   edge-node (DEV)  |  Oracle -> S3 ingestion server
+   Project folder : ~/oracle-s3-ingestion
+   Run a table    : bash bin/run_table.sh dev <table_id>
+   List tables    : python3 -m dif.run --env dev --list
+   Logs           : ~/oracle-s3-ingestion/logs/
+  ================================================================
+

@@ -1,0 +1,4 @@
+oracledb>=2.0        # Oracle driver (thin mode: no Oracle client install needed)
+boto3>=1.34          # AWS SDK for Python
+pyarrow>=15.0        # Parquet files
+PyYAML>=6.0          # config files

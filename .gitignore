@@ -1,0 +1,24 @@
+# Secrets: NEVER commit
+.env
+.dif_env
+*.pem
+*.ppk
+*.p8
+credentials
+
+# Python
+__pycache__/
+.venv/
+venv/
+*.pyc
+.pytest_cache/
+
+# Data and logs
+data/
+*.parquet
+logs/*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/

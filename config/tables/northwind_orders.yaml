@@ -1,0 +1,14 @@
+table_id: northwind_orders
+source:
+  schema: NORTHWIND
+  table: ORDERS
+  primary_key: [ORDER_ID]
+load:
+  type: incremental
+  watermark_column: LAST_UPDATED
+  chunk_size: 50000
+target:
+  prefix: raw/oracle/northwind/orders
+validation:
+  sum_columns: [ORDER_TOTAL]   # money must match to the last decimal
+enabled: true

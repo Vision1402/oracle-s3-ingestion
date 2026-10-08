@@ -1,0 +1,11 @@
+# Small reference table: simplest to copy in full every day (a daily snapshot).
+table_id: northwind_products
+source:
+  schema: NORTHWIND
+  table: PRODUCTS
+  primary_key: [PRODUCT_ID]
+load:
+  type: full
+target:
+  prefix: raw/oracle/northwind/products
+enabled: true

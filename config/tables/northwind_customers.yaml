@@ -1,0 +1,15 @@
+# Customers change over time (loyalty tier, phone...), so we load only rows
+# whose LAST_UPDATED moved since the previous successful run.
+table_id: northwind_customers
+source:
+  schema: NORTHWIND
+  table: CUSTOMERS
+  primary_key: [CUSTOMER_ID]
+load:
+  type: incremental
+  watermark_column: LAST_UPDATED
+  lag_minutes: 2          # ignore the last 2 minutes: transactions still in flight
+  chunk_size: 50000
+target:
+  prefix: raw/oracle/northwind/customers
+enabled: true

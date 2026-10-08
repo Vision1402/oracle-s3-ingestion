@@ -67,17 +67,23 @@ DECLARE
   v_sends   PLS_INTEGER;
   v_dev     VARCHAR2(10);
   v_ch      VARCHAR2(20);
+  v_name    VARCHAR2(100);
+  v_seg     VARCHAR2(40);
 BEGIN
   DBMS_RANDOM.SEED(7);
   FOR c IN 1 .. 40 LOOP
     v_launch := TRUNC(SYSDATE) - TRUNC(DBMS_RANDOM.VALUE(5, 730)) + DBMS_RANDOM.VALUE(0.3, 0.7);
     v_ch     := v_channel(TRUNC(DBMS_RANDOM.VALUE(1, v_channel.COUNT + 1)));
+    -- Collection methods like .COUNT exist only in PL/SQL, not inside a SQL statement,
+    -- so pick the values here first and pass plain variables to the INSERT.
+    v_name   := v_theme(MOD(c - 1, v_theme.COUNT) + 1) || ' ' || TO_CHAR(v_launch, 'YYYY') || ' #' || c;
+    v_seg    := v_segment(TRUNC(DBMS_RANDOM.VALUE(1, v_segment.COUNT + 1)));
     INSERT INTO campaigns (campaign_id, campaign_name, channel, segment, launch_date, end_date,
                            budget, status, last_updated)
     VALUES (c,
-            v_theme(MOD(c - 1, v_theme.COUNT) + 1) || ' ' || TO_CHAR(v_launch, 'YYYY') || ' #' || c,
+            v_name,
             v_ch,
-            v_segment(TRUNC(DBMS_RANDOM.VALUE(1, v_segment.COUNT + 1))),
+            v_seg,
             v_launch,
             v_launch + 14,
             ROUND(DBMS_RANDOM.VALUE(2000, 60000), 2),

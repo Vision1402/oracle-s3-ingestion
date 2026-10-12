@@ -2,7 +2,7 @@
 # Passwords are NEVER stored here: only the NAMES of the environment variables that hold them.
 aws:
   region: us-east-1
-  bucket: <your-bucket-name>          # e.g. vision1402-mkt-raw-dev  (CHANGE THIS)
+  bucket: vision-mkt-raw-dev          # e.g. vision1402-mkt-raw-dev  (CHANGE THIS)
 oracle:
   dsn: oracle-legacy:1521/FREEPDB1    # host:port/service, as seen from the edge node
   user_env: ORACLE_USER               # set in ~/.dif_env
